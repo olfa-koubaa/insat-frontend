@@ -9,16 +9,15 @@ import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import {EventsComponent} from './events/events.component';
+import {ClubsComponent} from './clubs/clubs.component';
+import {InterviewsComponent} from './interviews/interviews.component';
+import {MeetingsComponent} from './meetings/meetings.component';
 
 export const routes: Routes = [
   {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
-  },
-  {
-    path: 'events',
-    component: EventsComponent
   },
   {
     path: '404',
@@ -55,6 +54,22 @@ export const routes: Routes = [
       title: 'Home'
     },
     children: [
+      {
+        path: 'events',
+        component: EventsComponent
+      },
+      {
+        path: 'clubs',
+        component: ClubsComponent
+      },
+      {
+        path: 'interviews',
+        component: InterviewsComponent
+      },
+      {
+        path: 'meetings',
+        component: MeetingsComponent
+      },
       {
         path: 'base',
         loadChildren: './views/base/base.module#BaseModule'

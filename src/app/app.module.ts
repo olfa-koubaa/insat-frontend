@@ -41,6 +41,9 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { EventsComponent } from './events/events.component';
 import {CardsComponent} from './views/base/cards.component';
+import { ClubsComponent } from './clubs/clubs.component';
+import { InterviewsComponent } from './interviews/interviews.component';
+import { MeetingsComponent } from './meetings/meetings.component';
 
 
 @NgModule({
@@ -65,7 +68,10 @@ import {CardsComponent} from './views/base/cards.component';
     LoginComponent,
     RegisterComponent,
     EventsComponent,
-    CardsComponent
+    CardsComponent,
+    ClubsComponent,
+    InterviewsComponent,
+    MeetingsComponent
   ],
   providers: [{
     provide: LocationStrategy,
