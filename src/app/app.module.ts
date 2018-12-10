@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import {LocationStrategy, HashLocationStrategy, CommonModule} from '@angular/common';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
@@ -44,13 +44,25 @@ import {CardsComponent} from './views/base/cards.component';
 import { ClubsComponent } from './clubs/clubs.component';
 import { InterviewsComponent } from './interviews/interviews.component';
 import { MeetingsComponent } from './meetings/meetings.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
+import {CalendarModule, DateAdapter} from 'angular-calendar';
+import {FormsModule} from '@angular/forms';
+import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
+import {FlatpickrModule} from 'angularx-flatpickr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
   imports: [
     BrowserModule,
+    CommonModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
+    FormsModule,
+    FlatpickrModule.forRoot(),
     AppAsideModule,
+    NgbModalModule,
     AppBreadcrumbModule.forRoot(),
     AppFooterModule,
     AppHeaderModule,
@@ -58,7 +70,11 @@ import { MeetingsComponent } from './meetings/meetings.component';
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    })
   ],
   declarations: [
     AppComponent,
@@ -71,7 +87,8 @@ import { MeetingsComponent } from './meetings/meetings.component';
     CardsComponent,
     ClubsComponent,
     InterviewsComponent,
-    MeetingsComponent
+    MeetingsComponent,
+    CalendarComponent
   ],
   providers: [{
     provide: LocationStrategy,
